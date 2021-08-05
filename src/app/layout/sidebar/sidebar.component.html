@@ -1,0 +1,48 @@
+<mat-sidenav-container [ngClass]="{'sidenav-height': isAuthenticated, 'sidenav-height-full': !isAuthenticated}">
+  <mat-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
+    <nav (click)="close()">
+      <ul>
+        <li>
+          <a class="nav-item-container" routerLink="/dashboard" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
+            <i class="material-icons">show_chart</i>
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a class="nav-item-container" routerLink="/examples/samplepage" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
+            <i class="material-icons">pie_chart</i>
+            Sample Page
+          </a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a class="nav-item-container" routerLink="/admin/users" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
+            <i class="material-icons">supervisor_account</i>
+            User Admin
+          </a>
+        </li>
+        <div class="nav-section-divider"></div>
+        <li>
+          <a class="nav-item-container" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
+            <i class="material-icons">help</i>
+            Help & Feedback
+          </a>
+        </li>
+        <li>
+          <a class="nav-item-container" routerLinkActive="active" (click)="themeService.toggleDarkTheme(); $event.stopPropagation();" [ngClass]="{'dark': themeService.darkTheme}">
+            <i class="material-icons mat-light">lightbulb_outline</i>
+            {{themeService.darkTheme ? 'Go Light' : 'Go Dark'}}
+          </a>
+        </li>
+        <mat-divider></mat-divider>
+      </ul>
+    </nav>
+    <div>
+      <img src="./favicon.ico" width="20px" style="padding-left:30px; position: absolute; margin: auto;" />
+      <span style="margin-left:55px;">Powered by Voyage</span>
+    </div>
+  </mat-sidenav>
+
+  <div class="main-content full-height">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

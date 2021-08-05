@@ -1,0 +1,78 @@
+mat-sidenav {
+  width: 256px;
+  background-color: inherit !important;
+}
+
+mat-sidenav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+// When not authenticated, we don't show the toolbar, meaning we need the height to be 100%.
+.sidenav-height-full {
+  height: 100%;
+}
+
+/* Since we have the toolbar over the sidenav, we need to give it 100% height minus the toolbar's height. */
+.sidenav-height {
+  height: calc(100% - 64px);
+}
+
+@media screen and (max-width: 600px) {
+  /* The toolbar shrinks to 56px at this breakpoint, need to update the sidenav height in that case. */
+  .sidenav-height {
+    height: calc(100% - 56px);
+  }
+}
+
+.nav-item-container {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 24px;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  text-decoration: none;
+  white-space: nowrap;
+
+  i {
+    margin-left: 26px;
+    margin-right: 30px;
+  }
+
+  &:hover {
+    background-color: #ddd;
+
+    &.dark {
+      background-color: #565656;
+    }
+  }
+}
+
+.active {
+  background-color: #ddd;
+
+  &.dark {
+    background-color: #565656;
+  }
+}
+
+a {
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: inherit;
+  }
+
+  &:active {
+    color: inherit;
+  }
+}
